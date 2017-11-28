@@ -8,7 +8,7 @@ app.config['SECRET_KEY'] = 'hard to guess secure key'
 @app.route('/')
 def home():
     #return '<h1>Welcome to James first server. Thanks for checking it out.</h1>'
-    return render_template('home-base.html')
+    return render_template('index.html')
 
 
 @app.route('/members')
