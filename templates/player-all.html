@@ -1,0 +1,48 @@
+{% extends "home-base.html"%}
+{% block title %}All Players{% endblock %}
+{% block page_content%}
+
+  <!-- Page Content -->
+  <div class="container">
+    <h1 class="mt-5"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Players:</h1>
+    <div class="row bottom-margin">
+      <a href="/player/add" class="btn btn-primary" role="button" aria-disabled="true">Add Player</a>
+    </div>
+    {% if players %}
+      <table class="table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Height</th>
+            <th>Weight</th>
+            <th>Position</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for player in players %}
+          <tr>
+              <th scope="row">{{player.id}}</th>
+              <td>{{player.name}}</td>
+              <td>{{player.height}}</td>
+              <td>{{player.weight}}</td>
+              <td>{{player.position}}</td>
+              <td>
+                <a href="/player/edit/{{player.id}}" class="btn btn-success" role="button">Edit</a>
+                <a href="/player/delete/{{player.id}}" class="btn btn-danger" role="button">Delete</a>
+              </td>
+          </tr>
+          {% endfor%}
+        </tbody>
+      </table>
+    {% else %}
+      <h3>there is no players in the database yet.</h3>
+    {% endif %}
+  </div>
+
+{% endblock%}
+
+{% block scripts%}
+{{super()}}
+{% endblock%}

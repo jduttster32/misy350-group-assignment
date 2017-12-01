@@ -1,0 +1,33 @@
+{% extends "home-base.html"%}
+{% block title %}Add Players{% endblock %}
+{% block page_content%}
+
+  <!-- Page Content -->
+  <div class="container">
+    <h1 class="mt-5"><i class="fa fa-user-circle-o" aria-hidden="true"></i> Add Players:</h1>
+    <form action="/player/add" method="post" id="add-player-form">
+      <div class="form-group">
+        <label>Name</label>
+        <input class="form-control" type="text" name="name" placeholder="Name of the Player" required="true">
+      </div>
+      <div class="form-group">
+        <label>Height</label>
+        <input class="form-control" type="text" name="height" placeholder="Height" required="true">
+      </div>
+      <div class="form-group">
+        <label>Weight</label>
+        <input class="form-control" type="text" name="weight" placeholder="Weight" required="true">
+      </div>
+      <div class="form-group">
+        <label>Position</label>
+        <input class="form-control" type="text" name="position" placeholder="Position" required="true">
+      </div>
+      <button type="submit" class="btn btn-primary">Add Player</button>
+    </form>
+  </div>
+
+{% endblock%}
+
+{% block scripts%}
+{{super()}}
+{% endblock%}

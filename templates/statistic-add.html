@@ -1,0 +1,38 @@
+{% extends "home-base.html"%}
+{% block title %}Add Stats{% endblock %}
+{% block page_content%}
+
+  <!-- Page Content -->
+  <div class="container">
+    <h1 class="mt-5"><i class="fa fa-book" aria-hidden="true"></i> Add Stats:</h1>
+    <form action="/statistic/add" method="post">
+      <div class="form-group">
+        <label>Field Goal Percentage</label>
+        <input class="form-control" type="text" name="fgp" placeholder="Field Goal Percentage" required="true">
+      </div>
+      <div class="form-group">
+        <label>Three Point Percentage</label>
+        <input class="form-control" type="text" name="threepp" placeholder="Three Point Percentage" required="true">
+      </div>
+      <div class="form-group">
+        <label>Player Rating</label>
+        <input class="form-control" type="text" name="prating" placeholder="Player Rating" required="true">
+      </div>
+
+      <div class="form-group">
+        <label>Player</label>
+        <select class="form-control" name="player">
+          {% for player in players %}
+              <option>{{player.name}}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="form-group">
+        Player not in the list? <a href="/player/add" class="btn btn-success" role="button" aria-disabled="true">Add Player</a>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Add Stats</button>
+    </form>
+  </div>
+
+{% endblock%}
