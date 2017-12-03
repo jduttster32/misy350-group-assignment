@@ -1,5 +1,5 @@
 import os
-from flask import Flask, session, render_template, request, flash, redirect, url_for
+from flask import Flask, session, render_template, request, flash, redirect, url_for, jsonify
 from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
@@ -53,6 +53,21 @@ def add_players():
         db.session.commit()
         return redirect(url_for('show_all_players'))
 
+@app.route('/api/player/add', methods=['POST'])
+def add_ajax_players():
+    # get data from the form
+    name = request.form['name']
+    height = request.form['height']
+    weight = request.form['weight']
+    position = request.form['position']
+
+    player = Player(name=name, height=height, weight=weight, position=position)
+    db.session.add(player)
+    db.session.commit()
+    # flash message type: success, info, warning, and danger from bootstrap
+    flash('Player Inserted', 'success')
+    return jsonify({"id": str(player.id), "name": player.name})
+
 @app.route('/player/edit/<int:id>', methods=['GET', 'POST'])
 def edit_player(id):
     player = Player.query.filter_by(id=id).first()
@@ -79,6 +94,13 @@ def delete_player(id):
         db.session.delete(player)
         db.session.commit()
         return redirect(url_for('show_all_players'))
+
+@app.route('/api/player/<int:id>', methods=['DELETE'])
+def delete_ajax_player(id):
+    player = Player.query.get_or_404(id)
+    db.session.delete(player)
+    db.session.commit()
+    return jsonify({"id": str(player.id), "name": player.name})
 
 @app.route('/statistics')
 def show_all_statistics():
@@ -135,6 +157,13 @@ def delete_statistic(id):
         db.session.delete(statistic)
         db.session.commit()
         return redirect(url_for('show_all_statistics'))
+
+@app.route('/api/statistic/<int:id>', methods=['DELETE'])
+def delete_ajax_stats(id):
+    statistic = Statistic.query.get_or_404(id)
+    db.session.delete(statistic)
+    db.session.commit()
+    return jsonify({"id": str(statistic.id), "name": statistic.player.name})
 
 @app.route('/members')
 def get_member():
