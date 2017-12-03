@@ -6,7 +6,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <!-- Favicon -->
+  <!--Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
   <!-- Fontawesome CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/1.1.3/sweetalert.css">
   <!-- Toastr CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+  <!-- Group Assignment CSS -->
   <link rel="stylesheet" href="{{ url_for('static', filename='css/group-assignment.css') }}">
   {% endblock%}
 </head>
@@ -48,12 +49,7 @@
       </div>
     </div>
   </nav>
-  {% for category, message in get_flashed_messages(with_categories=true) %}
-      <div class="alert alert-{{category}}">
-      <button type="button" class="close" data-dismiss="alert">&times;</button>
-        {{ message }}
-      </div>
-    {% endfor %}
+
     {% block page_content%}
     {% endblock%}
 
