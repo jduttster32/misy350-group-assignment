@@ -5,3 +5,9 @@ body {
 .bottom-margin {
   margin-bottom: 10px;
 }
+
+.displayed {
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+  }
