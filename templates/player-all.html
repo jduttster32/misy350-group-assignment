@@ -31,6 +31,7 @@
               <td>
                 <a href="/player/edit/{{player.id}}" class="btn btn-success" role="button">Edit</a>
                 <a href="/player/delete/{{player.id}}" class="btn btn-danger" role="button">Delete</a>
+                <button class="btn btn-warning delete_ajax_btn" role="button" data-player-id="{{player.id}}">Delete Ajax</button>
               </td>
           </tr>
           {% endfor%}
@@ -46,4 +47,53 @@
 
 {% block scripts%}
 {{super()}}
+<script>
+  $(document).ready(function() {
+    $(".delete_ajax_btn").click(function(event) {
+      var player_id = $(this).data("player-id");
+      // get the table row of this song
+      var row = $(this).parent().parent();
+      swal({
+          title: "Are you sure?",
+          text: "All statistics of this player will be deleted too!",
+          type: "warning",
+          html: true,
+          showCancelButton: true,
+          confirmButtonColor: "#DD6B55",
+          confirmButtonText: "Yes, delete it!",
+          closeOnConfirm: false,
+          showLoaderOnConfirm: true
+        },
+        function(isConfirm) {
+          if (isConfirm) {
+            $.ajax({
+                type: "DELETE",
+                url: "/api/player/" + player_id,
+                success: function(response) {
+                  console.log(response);
+                  row.remove(); // remove the table row
+                  swal({
+                    title: "Deleted!",
+                    text: response.name + " has been deleted.",
+                    type: "success",
+                    timer: 2500,
+                    showConfirmButton: false
+                  }); // end of SweetAlert
+                } // end of success callback function
+              }) // end of ajax call
+              .fail(function(error) {
+                // console.log(data);
+                swal({
+                  title: "Oops...",
+                  text: "Deletion failed",
+                  type: "error",
+                  timer: 2000,
+                  showConfirmButton: false
+                }); // end of SweetAlert
+              }); // end of fail callback function
+          } // end of if confirmed block
+        }); // end of confirmed function of SweetAlert
+    }); // end of button click event function
+  }); // end doc ready
+</script>
 {% endblock%}
