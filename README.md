@@ -27,22 +27,10 @@ $ python manage.py runserver -d
 
 Navigating the webpages:
 
-Home-base.html is where you can navigate between the Home, Players, Statistics, and Members pages.
+The members page is where you can learn more about the team captains.
 
-The members.html page is where you can learn more about the team captains.
+The home page reveals a little information about our team and our players qualifications.
 
-The player-add.html page is where you can add a player to the team by entering Name, Height, Weight, and Position
+The player page is where each player is listed on the roster.
 
-The player-all.html page is where each player is listed on the roster.
-
-The player-delete.html tab is where you can delete a player that no longer plays on the team.
-
-The player-edit.html page is where you can edit a player(say someone gained some weight or height).
-
-The statistic-add.html page is where you can add statistics about a player through Field Goal Percentage, Three Point percentage, and Player Rating.
-
-The statistic-all.html page is where you can see those statistics for all players.
-
-The statistic-delete.html page is where you can delete stats from players through clicking the delete button.
-
-The statistic-edit.html page is where you can edit a players stats after each game.
+The statistic page is where you can see statistics for every player.
