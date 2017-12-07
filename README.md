@@ -2,9 +2,9 @@
 Description: For our project, we will be creating a 2 table database for an intramural basketball team. One of these tables will hold all the player names, height, weight and position. The second table will contain the stats for this player. These stats will include field goal percentage, 3-point percentage, and overall player rating along with the player name that these stats belong to. This will be a one to many relationship. For one player, there are many statistics.
 
 
-Setup Instructions:
+**Setup Instructions:**
 
-Make sure to use Python version 2.7.x.
+*Make sure to use Python version 2.7.x.*
 
 Install virtualenv if needed.
 
@@ -25,7 +25,7 @@ To run the development server (use -d to enable debugger and reloader):
 $ python manage.py runserver -d
 
 
-Navigating the webpages:
+**Navigating the webpages:**
 
 The members page is where you can learn more about the team captains.
 
